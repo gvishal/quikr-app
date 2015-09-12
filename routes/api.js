@@ -46,36 +46,67 @@ var genAccessToken = function(callback){
 }
 
 var accessApi = function(apiPath, token, tokenId, callback){
-    var url = "https://api.quikr.com" + apiPath
-    // console.log(url)
-    var apiName = apiPath
+  var url = "https://api.quikr.com" + apiPath
+  // console.log(url)
+  var apiName = apiPath
 
-    var date = moment().format('YYYY-MM-DD')
-    
-    var text = appId + apiName + date
-    console.log(text)
-    var signature = crypto.createHmac('sha1', token).update(text).digest('hex')
-    console.log(signature)
+  var date = moment().format('YYYY-MM-DD')
+  
+  var text = appId + apiName + date
+  console.log(text)
+  var signature = crypto.createHmac('sha1', token).update(text).digest('hex')
+  console.log(signature)
 
-    var request = require("request");
+  var request = require("request");
 
-    var options = { method: 'GET',
-      url: url,
-      headers: { 
-                  'X-Quikr-App-Id': appId,
-                  'X-Quikr-Token-Id': tokenId,
-                  'X-Quikr-Signature': signature
-                },
-      };
+  var options = { method: 'GET',
+    url: url,
+    headers: {  
+                'X-Quikr-App-Id': appId,
+                'X-Quikr-Token-Id': tokenId,
+                'X-Quikr-Signature': signature
+              },
+    };
 
-    request(options, function (error, response, body) {
-      if (error) throw new Error(error)
-      // console.log(body)
-      // return body  
-      callback(null, body)
-    });
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error)
+    // console.log(body)
+    // return body  
+    callback(null, body)
+  });
 }
 
+var postAd = function(data, token, tokenId, callback){
+  var url = 'https://api.quikr.com/public/postAds'
+  var apiName = '/public/postAds'
+  var date = moment().format('YYYY-MM-DD')
+  
+  var text = appId + apiName + date
+  console.log(text)
+  var signature = crypto.createHmac('sha1', token).update(text).digest('hex')
+  console.log(signature)
+
+  var request = require("request");
+
+  var options = { method: 'POST',
+    url: url,
+    headers: {  
+                'content-type': 'application/json',
+                'X-Quikr-App-Id': appId,
+                'X-Quikr-Token-Id': tokenId,
+                'X-Quikr-Signature': signature
+              },
+    body: data,
+    json: true
+    };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error)
+    // console.log(body)
+    // return body  
+    callback(null, body)
+  });
+}
 
 var sys = require('sys');
 var exec = require('child_process').exec;
@@ -107,7 +138,13 @@ router.get('/', function(req, res) {
 
 router.post('/ad', function(req, res, next) {
   logRequest(req, 'Post new ad called')
-  
+  var newAd = new Ad(req.body)
+  console.log(req.body)
+  postAd(req.body, token, tokenId, function(err, results){
+    console.log(results)
+    return res.json(results)
+  })
+
 })
 
 router.get('/get-token', function(req, res, next) {
