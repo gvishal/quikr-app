@@ -1,4 +1,4 @@
-var guiApp = angular.module('adninja', ['ui.router', 'ngDialog', 'ngVideo']);
+var guiApp = angular.module('adninja', ['ui.router', 'ngDialog']);
 
 guiApp.config([
 '$stateProvider',
