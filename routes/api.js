@@ -1,5 +1,7 @@
 var express = require('express');
-
+var jwt = require('jsonwebtoken');
+var expressJwt = require('express-jwt');
+var secret = "Seems Silly to make this a";  // the secret used by jwt
 var router = express.Router();
 
 var mongoose = require('mongoose');
@@ -20,7 +22,9 @@ var logRequest = function(req, message){
      req.connection.socket.remoteAddress) + message);
 }
 
-var Video = mongoose.model('Video');
+var UserLogin = mongoose.model('UserLogin');
+var Ad = mongoose.model('Ad');
+var Commiter = mongoose.model('Commiter');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -29,6 +33,11 @@ router.get('/', function(req, res) {
 
   res.json({status : 'Api working'});
 });
+
+router.post('/ad', function(req, res, next) {
+  logRequest(req, 'Post new ad called')
+  
+})
 
 /*
 { video: 

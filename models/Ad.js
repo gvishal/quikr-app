@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var AdSchema = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'UserLogin', required: true },
 
+    quikrId: {type: String},//required = True?
     subCategory: {type: String, required: true},
     cityName: {type: String, required: true},
     locations: {type: String, required: true},
@@ -11,14 +12,16 @@ var AdSchema = new Schema({
     description: {type: String, required: true},
     attributes: {type: String, required: true},
     images: [String],
+    mainImage: String,
     price: {type: Number, required: true},
     // type contains whether slabs or bid
     type: {type: String, required: true},
-    noOfSlabs: {type: Number, required: true},
+    noOfSlabs: {type: Number, default: 0},
     //m.mixed = { any: { thing: 'i want' } };
     //m.markModified('mixed');
     slabs: Schema.Types.Mixed,
-    noOfCommiters
+    noOfCommiters: {type: Number, default: 0},
+    bid: {type: Number},
     date: {type: Date, default: Date.now }
 
 });

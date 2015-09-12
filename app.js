@@ -11,8 +11,11 @@ var mongoose = require('mongoose');		// mongodb object modelling tool
 
 var multer  = require('multer');
 
+var jwtSecret = "Seems Silly to make this a"; // the secret used by jwt
+
 require('./models/UserLogin');
-require('./models/Video');
+require('./models/Ad');
+require('./models/Commiter');
 
 mongoose.connect('mongodb://localhost/quikr_database',function(err) {
   if (err) throw err;
@@ -21,6 +24,7 @@ mongoose.connect('mongodb://localhost/quikr_database',function(err) {
 
 var index = require('./routes/index');
 var api = require('./routes/api');
+var user = require('./routes/user');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -35,10 +39,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var Video = mongoose.model('Video');
+var UserLogin = mongoose.model('UserLogin');
+var Ad = mongoose.model('Ad');
+var Commiter = mongoose.model('Commiter');
 
 app.use('/', index);
 app.use('/api', api);
+app.use('/user', user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
