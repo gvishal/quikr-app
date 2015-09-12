@@ -1,0 +1,25 @@
+<div class="control-group"></div>
+<div class="row">
+	<div class="col-md-6">
+		<form>
+			<div class="form-group">
+				<label for="video">Video</label>
+			<div style="position:relative;">
+        	<a class='btn btn-primary' href='javascript:;'>
+            	Choose File...
+            	<input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="video" id="video" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+        	</a>
+        	&nbsp;
+        	<span class='label label-info' id="upload-file-info"></span>
+        </div>
+		</div>
+			<div class="form-group">
+				<label for="marker">Marker</label>
+				<input type="file" id="marker" name="marker">
+			</div>
+		</form>
+	</div>
+
+	<div class="col-md-6">
+	</div>
+</div>

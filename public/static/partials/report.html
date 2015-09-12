@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col-md-5">
+  </div>  
+  <div class="col-md-1">
+   <h2>Report</h2> 
+  </div>
+</div><br/>
+
+<div class="row">
+  <div class="col-xs-6">
+    <div >
+      <h1>Response Time (ms)</h1>
+      <div linear-chart chart-data="salesData" chart-color="blue"></div>
+    </div>
+    <div >
+      <h1>Requests Per Second</h1>
+      <div linear-chart chart-data="rpsData" chart-color="red"></div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Slaves</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method">{{size(slaves)}}</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Method</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.method">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">URL</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.name">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Requests</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.num_requests">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Failures</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.num_failures">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Median Response Time (ms)</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.median_response_time">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Average Response Time (ms)</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.avg_response_time">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Min Response Time (ms)</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.min_response_time">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Max Response Time (ms)</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.max_response_time">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Requests Per Second</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.num_reqs_per_sec">Method</label>
+        </div>
+      </div><br/>
+      <div class="row">
+        <div class="col-md-6" >
+          <label class="control-label" for="method">Content Size</label>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="method" ng-bind="summary.content_length">Method</label>
+        </div>
+      </div><br/>
+    </div>
+</div>
