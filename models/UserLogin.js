@@ -8,10 +8,7 @@ var UserLoginSchema = new Schema({
     password: { type: String, required: true },
     signupcode: String,
     current_token: String, //used to check if someone is trying to login through expired token.
-    email: { type: String },
-    institution: { type: String },
-    score: {type: Number, default: 0},
-    correctCount: {type: Number, default: 0}
+    email: { type: String }
 });
 
 UserLoginSchema.pre('save', function(next) {

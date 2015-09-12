@@ -11,6 +11,7 @@ var mongoose = require('mongoose');		// mongodb object modelling tool
 
 var multer  = require('multer');
 
+require('./models/UserLogin');
 require('./models/Video');
 
 mongoose.connect('mongodb://localhost/quikr_database',function(err) {
