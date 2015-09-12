@@ -3,8 +3,79 @@ var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var secret = "Seems Silly to make this a";  // the secret used by jwt
 var router = express.Router();
+var crypto = require('crypto')
+
+var moment = require('moment')
 
 var mongoose = require('mongoose');
+
+// var tokenGen = require('../quikr-token-gen.js')
+var appId = 519
+var appSecret = "938f553e22be73fd5d40b041f5ed1928"
+// Need to be regenerated every day.
+var token = '0a40c78e2d4fac12158627e1d6372539'
+var tokenId = 3039209
+
+var genAccessToken = function(callback){
+    var url = "https://api.quikr.com/app/auth/access_token"
+
+    var date = moment().format('YYYY-MM-DD')
+    // console.log(date)
+    var text = "vishalgu@outlook.com" + appId + date
+    // console.log(text)
+    var signature = crypto.createHmac('sha1', appSecret).update(text).digest('hex')
+    // console.log(signature)
+
+    var data = {"appId": appId, "signature": signature}
+    console.log(JSON.stringify(data))
+
+    var request = require("request");
+
+    var options = { method: 'POST',
+      url: 'https://api.quikr.com/app/auth/access_token',
+      headers: { 'content-type': 'application/json' },
+      body: data,
+      json: true };
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error)
+      // console.log(body)
+      // return body  
+      callback(null, body)
+    });
+}
+
+var accessApi = function(apiPath, token, tokenId, callback){
+    var url = "https://api.quikr.com" + apiPath
+    // console.log(url)
+    var apiName = apiPath
+
+    var date = moment().format('YYYY-MM-DD')
+    
+    var text = appId + apiName + date
+    console.log(text)
+    var signature = crypto.createHmac('sha1', token).update(text).digest('hex')
+    console.log(signature)
+
+    var request = require("request");
+
+    var options = { method: 'GET',
+      url: url,
+      headers: { 
+                  'X-Quikr-App-Id': appId,
+                  'X-Quikr-Token-Id': tokenId,
+                  'X-Quikr-Signature': signature
+                },
+      };
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error)
+      // console.log(body)
+      // return body  
+      callback(null, body)
+    });
+}
+
 
 var sys = require('sys');
 var exec = require('child_process').exec;
@@ -38,6 +109,36 @@ router.post('/ad', function(req, res, next) {
   logRequest(req, 'Post new ad called')
   
 })
+
+router.get('/get-token', function(req, res, next) {
+  logRequest(req, 'Get token called')
+
+  // To generate new token everyday
+  // genAccessToken(function(err, results){
+  //   if(err){return next(err)};
+  //   var token = results.token
+  //   var tokenId = results.tokenId
+  //   var url = '/public/trending'
+  //   console.log(results)
+  //   accessApi(url, token, tokenId, function(err, results){
+  //     return res.json(results)
+  //   })    
+  // })
+  var url = '/public/trending'
+  accessApi(url, token, tokenId, function(err, results){
+    console.log(results)
+    return res.json({"results": results})
+  }) 
+})
+
+router.get('/products', function(req, res, next) {
+  Ad.find({}, function(err, ads){
+    if(err){return next(err)}
+    return res.json(ads)
+  })
+})
+
+
 
 /*
 { video: 
