@@ -4,11 +4,6 @@ quickDrop.config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
-    $stateProvider.state('dashboard', {
-      url: '/dashboard',
-      templateUrl: '/partials/dashboard.html',
-      controller: 'DashboardCtrl'
-    });
 
     $stateProvider.state('electronics', {
       url: '/electronics',
@@ -45,5 +40,12 @@ function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/placeHolder.html',
       controller: 'placeholderCtrl'
     });
-  $urlRouterProvider.otherwise('/dashboard');
+
+    $stateProvider.state('add', {
+      url: '/add',
+      templateUrl: 'partials/addProduct.html',
+      controller: 'addCtrl'
+    });
+
+  $urlRouterProvider.otherwise('/electronics');
 }]);
