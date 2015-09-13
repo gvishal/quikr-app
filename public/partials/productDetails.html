@@ -72,33 +72,33 @@ a.notify-me-when-available2:hover {
 	background-color: #89e4ac;
 }
 				</style>
-				<a href="#" class="notify-me-when-available">Commit at {{curr_price}}</a>
-				<a href="#" class="notify-me-when-available2">Buy now at {{curr_price}}</a>
+				<a href="" class="notify-me-when-available" ng-click="commit()">Commit at {{nextPrice}}</a>
+				<a href="" class="notify-me-when-available2">Buy now at {{curr_price}}</a>
 				
 			</div>
 			<div id="inventory">
 				<div>
 					<div class="col-md-4 text-left nopadding">
-						<h3>1800</h3>
+						<h3>{{curr_price}}</h3>
 					</div>
 					<div>
 						<div class="col-md-4 text-center">
-							<h3>20 more to go!</h3>
+							<h3>{{moreToGo}} more to go!</h3>
 						</div>
 						<div>
 							<div class="col-md-4 text-right nopadding">
-								<h3>1600</h3>
+								<h3>{{nextPrice}}</h3>
 							</div>
 						</div>
 						<br />
 						<div class="inventory-option ">
 						</div>
 						<div class="inventory-bar">
-							<div class="inventory-instockbar" style="width:98.0%"></div>
+							<div class="inventory-instockbar" style="width:{{100*(1 - moreToGo/maxUsers)}}%"></div>
 						</div>
 					</div>
 					<div class="info">
-						<p><span style="line-height: 1.2;"></span><p ph-txt="1p"></p><span style="color: #e06666;"></span></p>
+						<p><span style="line-height: 1.2;"></span><p>{{description}}</p><span style="color: #e06666;"></span></p>
 						<div id="moreInfo">
 							<ul style="margin-left: 20px;">
 								<li ph-txt="1s"></li>

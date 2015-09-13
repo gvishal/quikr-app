@@ -146,9 +146,10 @@ router.post('/ad', function(req, res, next) {
   var adId = newAd._id
   
   var adUrl = BASE_URL + '#/products/' + adId
-  var newDescription = 'For great offers on this product, click here ' + adUrl + ' . '
+  var newDescription = 'For great offers on this product, click here ' + adUrl + '. '
   newDescription = newDescription + newAd.description
-  newAd.description = newDescription
+  // No need since only quikr ka description need contain the link back to use
+  // newAd.description = newDescription
   adData.description = newDescription
 
   newAd.userId = new ObjectId("55f46f3fd35acfba5f499fb6")
@@ -199,11 +200,11 @@ router.get('/get-token', function(req, res, next) {
 router.get('/products', function(req, res, next) {
   Ad.find({}, function(err, ads){
     if(err){return next(err)}
-    return res.json(ads)
+    return res.json({data: ads})
   })
 })
 
-router.post('/commit/:product_id', function(req, res, next){
+router.get('/commit/:product_id', function(req, res, next){
   var productId = req.params.product_id
   logRequest(req, 'commit for ' + productId)
   Ad.findById(new ObjectId(productId), function(err, ad){
