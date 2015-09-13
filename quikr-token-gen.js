@@ -1,16 +1,10 @@
 var crypto = require('crypto')
-  , text = 'I love cupcakes'
-  , key = 'abcdeg'
-  , hash
 
 var moment = require('moment')
-var async = require("async");
+var async = require('async');
 
 var appId = 519
 var appSecret = "938f553e22be73fd5d40b041f5ed1928"
-
-
-hash = crypto.createHmac('sha1', key).update(text).digest('hex')
 
 var genAccessToken = function(callback){
     var url = "https://api.quikr.com/app/auth/access_token"
@@ -35,15 +29,19 @@ var genAccessToken = function(callback){
 
     request(options, function (error, response, body) {
       if (error) throw new Error(error)
-
-      console.log(body)
+      // console.log(body)
+      // return body  
       callback(null, body)
     });
 
 }
 
-async.series([genAccessToken(callback)],
-    function(err, results){
-        resp = results
-        console.log(resp)
-    })
+// genAccessToken(function(err, results){
+//     var resp = results
+//     console.log(resp)
+//     return resp
+// })
+
+module.exports = function(){ 
+    genAccessToken = genAccessToken
+}

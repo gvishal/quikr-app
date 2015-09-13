@@ -25,6 +25,7 @@ mongoose.connect('mongodb://localhost/quikr_database',function(err) {
 var index = require('./routes/index');
 var api = require('./routes/api');
 var user = require('./routes/user');
+// var tokenGen = require('./quikr-token-gen.js')
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -60,7 +61,7 @@ app.use(function(err, req, res, next){
   if (err.constructor.name === 'UnauthorizedError') {
     return res.status(401).json({status : 'Unauthorized'});
   }
-  return res.status(404).json({status : 'Not found'});
+  return res.status(404).json({status : 'Not found', err: err});
 });
 
 // development error handler
@@ -81,7 +82,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: err
   });
 });
 

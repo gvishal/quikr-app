@@ -6,7 +6,6 @@ var mongoose = require('mongoose'),
 var UserLoginSchema = new Schema({
     username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
-    signupcode: String,
     current_token: String, //used to check if someone is trying to login through expired token.
     email: { type: String }
 });
