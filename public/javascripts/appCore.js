@@ -22,5 +22,28 @@ function($stateProvider, $urlRouterProvider) {
       controller: 'ProductCtrl'
     });
 
+    $stateProvider.state('lifestyle', {
+      url: '/lifestyle',
+      templateUrl: 'partials/placeHolder.html',
+      controller: 'placeholderCtrl'
+    });
+
+    $stateProvider.state('clothing', {
+      url: '/clothing',
+      templateUrl: 'partials/placeHolder.html',
+      controller: 'placeholderCtrl'
+    });
+
+    $stateProvider.state('bestof', {
+      url: '/bestof',
+      templateUrl: 'partials/placeHolder.html',
+      controller: 'placeholderCtrl'
+    });
+
+    $stateProvider.state('popular', {
+      url: '/popular',
+      templateUrl: 'partials/placeHolder.html',
+      controller: 'placeholderCtrl'
+    });
   $urlRouterProvider.otherwise('/dashboard');
 }]);

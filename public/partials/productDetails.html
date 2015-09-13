@@ -18,19 +18,63 @@
 			
 			<div class="moreimageslink"><a href="#moreImages" ><i class="icon-long-arrow-down left"></i><span>MORE IMAGES BELOW</span><i class="icon-long-arrow-down right"></i></a></div>
 		</div>
-		
 		<div id="product-details">
 			<div class="title">
 				<h2>{{productName}}</h2>
 				<div class="spacer"></div>
-				<h3 class="price">
+				<h3 class="price"></h3>
 				
 				<style type="text/css">
-				
+				a.notify-me-when-available {
+	max-width: 70%;
+	margin: 0 auto;
+	background-color: #89e4ac;
+	cursor: pointer;
+	padding-left: 1rem;
+	padding-right: .4rem;
+	display: block;
+	padding: 1.5rem;
+	-webkit-transition: background-color 300ms ease-out, color 300ms ease-out;
+	-moz-transition: background-color 300ms ease-out, color 300ms ease-out;
+	transition: background-color 300ms ease-out, color 300ms ease-out;
+	text-align: center;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 1.5rem;
+	font-family: "Proxima Nova Semibold", Lato, Helvitica, Arial, sans-serif;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+}
+a.notify-me-when-available:hover {
+	background-color: #00aeff;
+}
+a.notify-me-when-available2 {
+	max-width: 70%;
+	margin: 0 auto;
+	background-color: #00aeff;
+	cursor: pointer;
+	padding-left: 1rem;
+	padding-right: .4rem;
+	display: block;
+	padding: 1.5rem;
+	-webkit-transition: background-color 300ms ease-out, color 300ms ease-out;
+	-moz-transition: background-color 300ms ease-out, color 300ms ease-out;
+	transition: background-color 300ms ease-out, color 300ms ease-out;
+	text-align: center;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 1.5rem;
+	font-family: "Proxima Nova Semibold", Lato, Helvitica, Arial, sans-serif;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+}
+a.notify-me-when-available2:hover {
+	background-color: #89e4ac;
+}
 				</style>
-				<a href="#" id="BIS_trigger" class="notify-me-when-available">Commit at {{curr_price}}</a>
-				<a href="#" id="BIS_trigger" class="notify-me-when-available2">Buy now at {{curr_price}}</a>
-				</h3>
+				<a href="#" class="notify-me-when-available">Commit at {{curr_price}}</a>
+				<a href="#" class="notify-me-when-available2">Buy now at {{curr_price}}</a>
+				
 			</div>
 			<div id="inventory">
 				<div>
