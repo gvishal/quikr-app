@@ -1,4 +1,4 @@
-guiApp.controller('DashboardCtrl', function ($window, $scope, $http, $state, $timeout, ngDialog){
+quickDrop.controller('DashboardCtrl', function ($window, $scope, $http, $state, $timeout, ngDialog){
 
   console.log("hi");
 

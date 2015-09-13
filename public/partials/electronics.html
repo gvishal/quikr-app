@@ -1,0 +1,18 @@
+<section class="item-section">
+  <div class="item-section-divider"><h2><a href="/collections/featured" >Featured</a></h2></div>
+  <ul class="products group-8-items">
+    <li class="product"  ng-repeat="product in products">
+      <a href="#/products/{{product.id}}" title={{product.name}}>
+        <img src={{product.imageUrl}}>
+        <div class="info">
+          <span class="name">{{product.name}}</span>
+          <hr class="spacer" />
+          <span class="price">
+            {{product.curr_price}}
+          </span>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="item-section-view-all right"><a href="#" class="button">view all <i class="icon-long-arrow-right"></i></a></div>
+</section>

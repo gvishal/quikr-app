@@ -1,96 +1,90 @@
 <! DOCTYPE html>
-<html>
+<html ng-app="quickDrop">
   <head>
     <title>quikr</title>
     <link href="stylesheets/sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/custom.css">
-
-    <script src="/javascripts/angular.min.jss"></script>
+    <script src="/javascripts/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js">
     </script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+    <script src="/javascripts/placeholders.js"></script>
     <script src="/javascripts/appCore.js"></script>
     <script src="/javascripts/dashboardCtrl.js"></script>
-    <script src="/javascripts/widgetCtrl.js"></script>
-
-
-  <link rel="stylesheet" type="text/css" href="http://www.ugmonk.com/css/reset.css" />
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="http://f.fontdeck.com/s/css/7dPWBNz9ZR4gPM1bnAvv6LAlYM4/shop.ugmonk.com/19618.css" type="text/css" />
-  <link rel="stylesheet" href="//f.fontdeck.com/s/css/l4MsFun30OJhB9DTDGcb8JQSAOQ/shop.ugmonk.com/35790.css" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/custom_monk.css" />
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-  <script src="//cdn.shopify.com/s/files/1/0167/4484/t/10/assets/modernizr.js?8449175497329053432" type="text/javascript"></script>
+    <script src="/javascripts/electronicsCtrl.js"></script>
+    <script src="/javascripts/productCtrl.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.ugmonk.com/css/reset.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700italic' rel='stylesheet' type='text/css'>
+    <!-- <link rel="stylesheet" href="http://f.fontdeck.com/s/css/7dPWBNz9ZR4gPM1bnAvv6LAlYM4/shop.ugmonk.com/19618.css" type="text/css" />
+    <link rel="stylesheet" href="//f.fontdeck.com/s/css/l4MsFun30OJhB9DTDGcb8JQSAOQ/shop.ugmonk.com/35790.css" type="text/css" /> -->
+    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/custom_monk.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdn.shopify.com/s/files/1/0167/4484/t/10/assets/modernizr.js?8449175497329053432" type="text/javascript"></script>
   </head>
-<header>
-        <header class="main">   
-            <div class="width-container">
-                <a class="mobile-menu-button"><i class="fa fa-bars"></i></a>
-                <a href="/" class="logo"></a>
-                <nav class="areas">
-                    <ul class="button-group">
-                      <li><a href="/" class="small button">Explore</a></li>
-                      <li><a href="#" class="small button">Add</a></li>
-                        <li><a href="#" class="small button">About</a></li>
-                        <li><a href="#" class="small button">Log out!</a></li>
-                    </ul>
-                </nav>
-                <nav class="right">
-                  <a class="link" href="#">Contact Us</a>
-                  <a class="link" href="#">Help</a>
-                  <a id="cart-button" href="#" class="small button"><i class="icon-shopping-cart"></i> CART <span data-bind="text: item_count_parens"></span></a>
-                </nav>
-                <a class="mobile-cart-button" href="#"><i class="fa fa-shopping-cart"></i></a>
-                
-                
-            </div>
-        </header>
-
-        <div id="sticky">
-        <header class="ribbon">
-            <div class="width-container">
-                <ul class="button-group">
-                    <li data-collection="clothing"><a href="#" class="small button">Clothing</a></li>
-                    <li data-collection="lifestyle"><a href="#" class="small button">Lifestyle</a></li>
-                    <li data-collection="electronics"><a href="#" class="small button">electronics</a></li>
-                    <li data-collection="best deals"><a href="#" class="small button">best deals!</a></li>
-                    <li data-collection="popular"><a href="#" class="small button">popular</a></li>
-                    <li data-collection="all"><a href="#" class="small button mobile-only">All Products</a></li>
-                    <li class="right search-button">
-                      <a class="small button search"><span>Search</span><i class="icon-search" ></i></a>
-                        <form action="/search" class="search">
-                            <input name="q" type="text" placeholder="Search"><button><i class="icon-search"></i></button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </header>
-      </div>
-
-  <body style="font-size:16px">
-    <div ng-app="adninja" class="container">
-      <!--HERE'S THE CONTAINER WHERE ALL THE TEMPLATES GO -->
-      <div class="row" id="holder">
-        <div class="col-md-3 col-lg-12">
-          <div ui-view></div>
+  <body>
+    <header>
+      <header class="main">
+        <div class="width-container">
+          <a class="mobile-menu-button"><i class="fa fa-bars"></i></a>
+          <a href="/" class="logo"></a>
+          <nav class="areas">
+            <ul class="button-group">
+              <li><a href="/" class="small button">Explore</a></li>
+              <li><a href="#" class="small button">Add</a></li>
+              <li><a href="#" class="small button">About</a></li>
+              <li><a href="#" class="small button">Log out!</a></li>
+            </ul>
+          </nav>
+          <nav class="right">
+            <a class="link" href="#">Contact Us</a>
+            <a class="link" href="#">Help</a>
+            <a id="cart-button" href="#" class="small button"><i class="icon-shopping-cart"></i> CART <span data-bind="text: item_count_parens"></span></a>
+          </nav>
+          <a class="mobile-cart-button" href="#"><i class="fa fa-shopping-cart"></i></a>
+          
+          
         </div>
+      </header>
+      <div id="sticky-anchor"></div>
+      <div id="sticky">
+        <header class="ribbon">
+          <div class="width-container">
+            <ul class="button-group">
+              <li data-collection="clothing"><a href="#" class="small button">Clothing</a></li>
+              <li data-collection="lifestyle"><a href="#" class="small button">Lifestyle</a></li>
+              <li data-collection="electronics"><a href="#/electronics" class="small button">electronics</a></li>
+              <li data-collection="best deals"><a href="#" class="small button">best deals!</a></li>
+              <li data-collection="popular"><a href="#" class="small button">popular</a></li>
+              <li data-collection="all"><a href="#" class="small button mobile-only">All Products</a></li>
+              <li class="right search-button">
+                <a class="small button search"><span>Search</span><i class="icon-search" ></i></a>
+                <form action="/search" class="search">
+                  <input name="q" type="text" placeholder="Search"><button><i class="icon-search"></i></button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </header>
       </div>
-    </div>
-   </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="javascripts/bootstrap.min.js"></script>
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-  </body>
-</html>
+      <div ui-view></div>
+      <script type="text/javascript">function sticky_relocate() {
+      var window_top = $(window).scrollTop();
+      var div_top = $('#sticky-anchor').offset().top;
+      if (window_top > div_top) {
+      $('#sticky').addClass('stuck');
+      } else {
+      $('#sticky').removeClass('stuck');
+      }
+      }
+      $(function () {
+      $(window).scroll(sticky_relocate);
+      sticky_relocate();
+      });</script>
+    </body>
+  </html>

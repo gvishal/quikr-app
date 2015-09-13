@@ -1,5 +1,62 @@
 body {
-	padding-top:50px;
+	padding-top: 50px;
 }
-
-.logo{background-image:url(/logo.png);width:19.6rem;height:6.5rem;display:inline-block;background-size:100% 100%;margin-top:1.4060000000000001em;float:left}
+.logo {
+	background-image: url(/logo.png);
+	width: 19.6rem;
+	height: 6.5rem;
+	display: inline-block;
+	background-size: 100% 100%;
+	margin-top: 1.4060000000000001em;
+	float: left
+}
+a.notify-me-when-available {
+	max-width: 70%;
+	margin: 0 auto;
+	background-color: #89e4ac;
+	cursor: pointer;
+	padding-left: 1rem;
+	padding-right: .4rem;
+	display: block;
+	padding: 1.5rem;
+	-webkit-transition: background-color 300ms ease-out, color 300ms ease-out;
+	-moz-transition: background-color 300ms ease-out, color 300ms ease-out;
+	transition: background-color 300ms ease-out, color 300ms ease-out;
+	text-align: center;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 1.5rem;
+	font-family: "Proxima Nova Semibold", Lato, Helvitica, Arial, sans-serif;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+}
+a.notify-me-when-available:hover {
+	background-color: #00aeff;
+}
+a.notify-me-when-available2 {
+	max-width: 70%;
+	margin: 0 auto;
+	background-color: #00aeff;
+	cursor: pointer;
+	padding-left: 1rem;
+	padding-right: .4rem;
+	display: block;
+	padding: 1.5rem;
+	-webkit-transition: background-color 300ms ease-out, color 300ms ease-out;
+	-moz-transition: background-color 300ms ease-out, color 300ms ease-out;
+	transition: background-color 300ms ease-out, color 300ms ease-out;
+	text-align: center;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 1.5rem;
+	font-family: "Proxima Nova Semibold", Lato, Helvitica, Arial, sans-serif;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+}
+a.notify-me-when-available2:hover {
+	background-color: #89e4ac;
+}
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}

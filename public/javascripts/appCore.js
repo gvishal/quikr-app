@@ -1,26 +1,26 @@
-var guiApp = angular.module('adninja', ['ui.router', 'ngDialog']);
+var quickDrop = angular.module('quickDrop', ['ui.router', 'placeholders']);
 
-guiApp.config([
+quickDrop.config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
-
     $stateProvider.state('dashboard', {
       url: '/dashboard',
       templateUrl: '/partials/dashboard.html',
       controller: 'DashboardCtrl'
     });
 
-    $stateProvider.state('widget', {
-      url: '/widget',
-      templateUrl: '/partials/widget.html',
-      controller: 'WidgetCtrl'
+    $stateProvider.state('electronics', {
+      url: '/electronics',
+      templateUrl: 'partials/electronics.html',
+      controller: 'ElectronicsCtrl'
     });
 
-    $stateProvider.state('upload', {
-      url: '/upload',
-      templateUrl: '/partials/upload.html',
-      controller: 'UploadCtrl'
+    $stateProvider.state('productDetail', {
+      url: '/products/:productID',
+      templateUrl: 'partials/productDetails.html',
+      controller: 'ProductCtrl'
     });
+
   $urlRouterProvider.otherwise('/dashboard');
 }]);

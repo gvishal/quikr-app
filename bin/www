@@ -1,5 +1,0 @@
-#!/usr/bin/env node
-var debug = require('debug')('quikr-gui');
-var app = require('../app');
-
-app.set('port', process.env.PORT || 8080);
