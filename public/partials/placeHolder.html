@@ -3,7 +3,7 @@
   <ul class="products group-8-items">
     <li class="product"  ng-repeat="product in products">
       <a href="#/products/{{product.id}}" title={{product.name}}>
-        <img ph-img="1024x1024">
+        <img ng-src={{product.imageUrl}}>
         <div class="info">
           <span class="name">{{product.name}}</span>
           <hr class="spacer" />

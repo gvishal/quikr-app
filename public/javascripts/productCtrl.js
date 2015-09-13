@@ -31,6 +31,12 @@ quickDrop.controller('ProductCtrl', function ($window, $scope, $http, $state, $s
 			}
 			$scope.maxUsers = $scope.slabs.slab1.users
 			$scope.description = $scope.products[i].description
+            var urlTitle = ''
+            var words = $scope.products[i].title.split(" ")
+            for(var j = 0; j < words.length; j++){
+                urlTitle += words[j] + '-'
+            }
+            $scope.quikrUrl = 'http://hyderabad.quikr.com/' + urlTitle + 'W0QQAdIdZ' + $scope.products[i].quikrId
 		}		
 	}
     })
