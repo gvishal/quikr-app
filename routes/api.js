@@ -8,7 +8,7 @@ var crypto = require('crypto')
 var moment = require('moment')
 
 var mongoose = require('mongoose');
-
+var ObjectId = mongoose.Types.ObjectId
 // var tokenGen = require('../quikr-token-gen.js')
 var appId = 519
 var appSecret = "938f553e22be73fd5d40b041f5ed1928"
@@ -53,9 +53,9 @@ var accessApi = function(apiPath, token, tokenId, callback){
   var date = moment().format('YYYY-MM-DD')
   
   var text = appId + apiName + date
-  console.log(text)
+  // console.log(text)
   var signature = crypto.createHmac('sha1', token).update(text).digest('hex')
-  console.log(signature)
+  // console.log(signature)
 
   var request = require("request");
 
@@ -104,7 +104,7 @@ var postAd = function(data, token, tokenId, callback){
     if (error) throw new Error(error)
     // console.log(body)
     // return body  
-    callback(null, body)
+    callback(error, response, body)
   });
 }
 
@@ -136,15 +136,43 @@ router.get('/', function(req, res) {
   res.json({status : 'Api working'});
 });
 
+var BASE_URL = 'http://127.0.0.1:8080/'
+
 router.post('/ad', function(req, res, next) {
   logRequest(req, 'Post new ad called')
-  var newAd = new Ad(req.body)
-  console.log(req.body)
-  postAd(req.body, token, tokenId, function(err, results){
-    console.log(results)
-    return res.json(results)
-  })
+  var adData = req.body
 
+  var newAd = new Ad(adData)
+  var adId = newAd._id
+  
+  var adUrl = BASE_URL + '#/products/' + adId
+  var newDescription = 'For great offers on this product, click here ' + adUrl + ' . '
+  newDescription = newDescription + newAd.description
+  newAd.description = newDescription
+  adData.description = newDescription
+
+  newAd.userId = new ObjectId("55f46f3fd35acfba5f499fb6")
+  console.log(newAd)
+  console.log(req.body)
+  
+  postAd(adData, token, tokenId, function(error, response, body){
+    results = body
+    console.log(error, body)
+
+    if('errors' in results.PostAdResponse){
+      errors = results.PostAdResponse.errors
+      return res.json({success: false, error: errors})
+    }
+    quikrId = results.PostAdResponse.data.adId
+    newAd.quikrId = quikrId
+    newAd.save(function(err, result){
+      if(err){return res.json({success: false, err: err})}
+      return res.json(results)
+    })
+    // return res.json(results)
+  })
+  // res.json(newAd)
+  // See the ad at http://hyderabad.quikr.com/PostAd/?succeed=abc&adId=
 })
 
 router.get('/get-token', function(req, res, next) {
@@ -175,6 +203,22 @@ router.get('/products', function(req, res, next) {
   })
 })
 
+router.post('/commit/:product_id', function(req, res, next){
+  var productId = req.params.product_id
+  logRequest(req, 'commit for ' + productId)
+  Ad.findById(new ObjectId(productId), function(err, ad){
+    if(err){ return res.json({status: false, err: err})}
+    if(ad){
+      ad.noOfCommiters += 1
+      ad.save(function(err, result){
+        if(err){return res.json({status: false, err: 'Unable to save.'})}
+        return res.json({status: true, data: 'Update successfull'})
+      })
+    } else {
+      return res.json({status: false, err: 'No such ad'})
+    }
+  })
+})
 
 
 /*
