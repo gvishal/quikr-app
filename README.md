@@ -1,4 +1,4 @@
-**Links**:
+**Links**:  
 https://github.com/gvishal/quikr-app  
 https://docs.google.com/document/d/1d1W6-ECsBQLxxGLS6BszdIwQvL5eMsI5LaRYQyTqRD0/edit
 
@@ -7,15 +7,15 @@ Ishit Mehta
 International Institute of Information Technology, Hyderabad  
 
 ####Monetizability  
-Quikr can start this as a separate vertical and charge anyone who lists such a price drop an appropriate amount.
+Quikr can start this as a separate vertical and charge anyone who lists such a price drop.
 
 ####Creativity  
-Price drops are way to fun!
+It is a very simple yet effective idea. Price drops are way to fun!
 
 ####Technology Stack  
 **MEAN** stack: Mongo, ExpressJs, AngularJs, Node.js
 
-**Idea Name**: **Quik-Drop** 
+###Idea Name: **Quik-Drop** 
 
 #####Introduction
 Quikr is a very good platform to gather visibility for your products, both new and old. Retailers can post their ad and “quikly” gain new customers. But, selling on quikr involves a lot of manual work for the seller viz, he needs to manage the negotiations for each individual customer. Also payment and delivery channels are not clearly defined.
