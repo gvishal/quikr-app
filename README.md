@@ -1,6 +1,7 @@
 **Links**:  
-https://github.com/gvishal/quikr-app  
-https://docs.google.com/document/d/1d1W6-ECsBQLxxGLS6BszdIwQvL5eMsI5LaRYQyTqRD0/edit
+App: http://172.31.18.33:8080/  
+Code: https://github.com/gvishal/quikr-app  
+Concept: https://docs.google.com/document/d/1d1W6-ECsBQLxxGLS6BszdIwQvL5eMsI5LaRYQyTqRD0/edit
 
 Vishal Gupta  
 Ishit Mehta  
